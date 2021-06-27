@@ -1,0 +1,30 @@
+
+  <td data-cell="name">
+    <div class="icon-wrapper">
+      <svg class="icon icon-category">
+       <use xlink:href="./images/icons.svg#{{category}}"  fill="#fff"></use>
+      </svg>  
+    </div>
+    {{name}}
+  </td>
+  <td data-cell="created">{{date}}</td>
+  <td data-cell="category" class="category-cell">{{category}}</td>
+  <td data-cell="content">{{content}}</td>
+  <td data-cell="dates">{{dates}}</td>
+  <td>
+    <button class="btn-icon" data-action="edit">
+       <svg class="icon">
+        <use xlink:href="./images/icons.svg#pencil" fill="#666"></use>
+      </svg>
+    </button>
+    <button class="btn-icon" data-action="archive">
+      <svg class="icon">
+        <use xlink:href="./images/icons.svg#archive" fill="#666"></use>
+      </svg>
+    </button>
+    <button class="btn-icon" data-action="delete">
+      <svg class="icon" id="bin">
+        <use xlink:href="./images/icons.svg#bin" fill="#666"></use>
+      </svg>
+    </button>
+  </td>

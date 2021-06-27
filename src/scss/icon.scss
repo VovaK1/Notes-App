@@ -1,0 +1,26 @@
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.icon-wrapper {
+  background: #666;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.icon-category {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.icon#bin {
+  margin-right: 0;
+}

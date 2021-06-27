@@ -1,0 +1,56 @@
+ <div class="modal__container">
+        <h1 class="modal__heading">Your note:</h1>
+          <form action="" class="form">
+          <ul class="modal__list">
+          <li class="modal__item">
+            <label class="modal__btn" data-icon="task">
+              <input type="radio" name="category" class="form__radio" value="task">
+              <div class="icon-wrapper modal__icon-wrapper">
+                <svg class="icon icon-category modal__icon" id="bin">
+                  <use xlink:href="./images/icons.svg#task"  fill="#fff"></use>
+                </svg>  
+              </div>
+            </label>
+            <h3 class="modal__text">Task</h3>
+          </li>
+          <li class="modal__item">
+            <label class="modal__btn"  data-icon="thought">
+              <input type="radio" name="category" class="form__radio" value="thought">
+              <div class="icon-wrapper modal__icon-wrapper">
+                <svg class="icon icon-category modal__icon" id="bin">
+                  <use xlink:href="./images/icons.svg#thought"  fill="#fff"></use>
+                </svg>  
+              </div>
+            </label>
+            <h3 class="modal__text">Thought</h3>
+          </li>
+          <li class="modal__item">
+            <label class="modal__btn" data-icon="idea">
+              <input type="radio" name="category" class="form__radio" value="idea">
+              <div class="icon-wrapper modal__icon-wrapper">
+                <svg class="icon icon-category modal__icon" id="bin">
+                  <use xlink:href="./images/icons.svg#idea"  fill="#fff"></use>
+                </svg>  
+              </div>
+            </label>
+            <h3 class="modal__text">Idea</h3>
+          </li>
+        </ul>
+            <label class="form__label">
+              <div class="form__title">Name:</div>
+            <input type="text" name="name" id="form__name" class="form-note" required="required"> 
+            </label>
+            <label class="form__label" >
+              <div class="form__title">Date:</div>
+              <input type="date" name="date" id="form__date" class="form-note" required="required">
+            </label>
+            <label class="form__label">
+              <div class="form__title">Content:</div>
+              <textarea required="required" name="content" id="form__content" class="form-note"></textarea>
+            </label>
+            <div class="form__buttons">
+              <button type="reset" class="btn" id="cancel">Cancel</button>
+              <button type="submit" class="btn" id="submit">Submit</button>
+            </div>
+        </form>
+      </div>
