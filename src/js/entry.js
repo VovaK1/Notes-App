@@ -9,7 +9,6 @@ import Router from './router.js';
 View.loadInitialNotes();
 Controller.updateActiveNotes();
 
-const Archive = [];
 
 document.addEventListener('click', e => {
   Controller.clickHandler(e);

@@ -1,6 +1,6 @@
 export default  [
     {name: "Grocery store", date: "2012-12-12", category: "task", content: "bread, milk, water"},
-    {name: "Lorem", date: "2013-12-12", category: "task", content: "lorem ipsum dolor"},
+    {name: "Lorem", date: "2013-12-12", category: "task", content: "lorem ipsum dolor 1/1/2001 to 2/2/2002", dates: "1/1/2001, 2/2/2002"},
     {name: "Études", date: "2014-12-12", category: "thought", content:"J’aime beaucoup apprendre des langues étrangères"},
     {name: "Musik", date: "2015-12-12", category: "thought", content: "Der Mensch kann ohne Musik nicht leben"},
     {name: "Indgang", date: "2016-12-12", category: "idea", content: "Jeg er dig meget taknemmelig"},

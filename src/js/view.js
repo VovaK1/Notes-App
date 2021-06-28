@@ -3,9 +3,12 @@ import notes from './initialNotes.js';
 
 
 export default {
-  renderNote(noteData) {
-    const tbody = document.querySelector('tbody');    
+  renderNote(noteData, type) {
+    const tbody = document.getElementById(`${type}Notes`);    
     const tr = document.createElement('tr');
+    if (type === 'archived') {
+      tr.classList.add('archived');
+    }
     const note = template(noteData);
     tr.innerHTML = note;
     tbody.append(tr);
@@ -64,16 +67,41 @@ export default {
 
   loadInitialNotes() {
    for (const note of notes) {
-     this.renderNote(note);
+     this.renderNote(note, 'active');
    }
   },
 
   updateSummaryTable(quantity, column) {
-    if (column === 'active') {
       for (let key in quantity) {
-        let cell = document.getElementById(`${key}Active`);
-        cell.textContent = quantity[key];
+        if (column === 'active') { 
+          let cell = document.getElementById(`${key}Active`);
+          cell.textContent = quantity[key];
+        } else if (column === 'archived')   {
+          let cell = document.getElementById(`${key}Archived`);
+          cell.textContent = quantity[key];
         }
+  }},
+
+  removeTr(note) {
+    const tr = note.closest('tr');
+    tr.remove();
+  },
+
+  whatNotesAreDisplayed(active, archived) {
+    if (active.classList.contains('hidden')) {
+      return 'archived'
+    } else if (archived.classList.contains('hidden')) {
+      return 'active'
     }
-  }
+  },
+
+  removeEditIcons() {
+    const tbody = document.getElementById('archivedNotes');
+    const editIcons = tbody.querySelectorAll('[data-action="edit"]')
+      for (let icon of editIcons) {
+        if (!icon.classList.contains('hidden')) {
+          icon.classList.add('hidden')
+        }
+      }
+}
 }

@@ -1,6 +1,7 @@
 import Model from './model.js';
 import Router from './router.js';
 import View from './view.js';
+import Archive from './archive.js';
 
 export default {
   createRoute() {
@@ -20,8 +21,7 @@ export default {
   submitRoute() {
     const isValid = Model.checkValidity();
     if (isValid) {
-      const noteData = Model.getNoteData();
-      View.renderNote(noteData);
+      View.renderNote(Model.getNoteData());
       this.updateActiveNotes();
       View.toggleModal();
     }
@@ -31,40 +31,54 @@ export default {
     const isValid = Model.checkValidity();
     if (isValid) {
       View.deletePreviousNote();
-      const noteData = Model.getNoteData();
-      View.renderNote(noteData);
+      View.renderNote(Model.getNoteData());
       View.toggleModal();
     }
   },
 
   clickHandler(e) {
     if (this.isButton(e)) {
-      if (e.target.id) {
+      const route = e.target.id;
+      if (route) {
         e.preventDefault();
-        const route = e.target.id;
         Router.handle(route);
         }
       }
     if (this.isIconButton(e)) {
         const action = e.target.closest('button').dataset.action;
-        Router.handleNote(action, e.target);
+        if (action === 'operate') {
+          Archive.operate();
+        } else {
+          Router.handleNote(action, e.target);
+        }
     }
   },
 
   editNote(target) {
-   const data = Model.collectDataForEdit(target);
+   const data = Model.collectDataFromNote(target);
    const tr = target.closest('tr');
    tr.classList.add('editing');
    View.toggleModal(data);
   },
 
   archiveNote(target) {
-
+    const data = Model.collectDataFromNote(target);
+    if (this.alreadyInArchive(target)) {
+      Archive.takeFrom(data);
+      View.renderNote(data, 'active')
+    } else {
+      Archive.putIn(data);
+    }
+    View.removeTr(target);
+    this.updateActiveNotes();
   },
 
   deleteNote(target) {
-    const tr = target.closest('tr');
-    tr.remove();
+    if (this.alreadyInArchive(target)) {
+      const data = Model.collectDataFromNote(target);
+      Archive.takeFrom(data);
+    }
+    View.removeTr(target);
     this.updateActiveNotes();
   },
 
@@ -97,5 +111,14 @@ export default {
   updateActiveNotes() {
    const quantity = Model.countActiveNotes();
    View.updateSummaryTable(quantity, 'active');
+  },
+
+  alreadyInArchive(target) {
+    const tr = target.closest('tr');
+    if (tr.classList.contains('archived')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

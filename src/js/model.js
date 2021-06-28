@@ -7,9 +7,27 @@ export default {
     note.name = form.elements.name.value;
     note.date = form.elements.date.value;
     note.content = form.elements.content.value;
+    let dates = this.checkIfDatesIn(form.elements.content.value);
+    if (dates) {
+      note.dates = dates;
+    }
     return note;
   },
 
+  checkIfDatesIn(text) {
+    let result = text.match(/\d\d[\/-]\d\d[\/-]\d\d\d\d/g);
+    if (!result) {
+      result = text.match(/\d[\/-]\d[\/-]\d\d\d\d/g)
+    }
+     return result;
+  },
+
+  shallowNotEqual(object1, object2) {
+      if (object1.name !== object2.name || object1.date !== object2.date || object1.content !== object2.content || object1.category !== object2.category) {
+        return true;
+      }
+    return false;
+  },
 
   checkValidity() {
   const form = document.querySelector('form');
@@ -64,7 +82,7 @@ export default {
     }
   },
 
-  collectDataForEdit(target) {
+  collectDataFromNote(target) {
     const obj = {};
     const tr = target.closest('tr');
     const allTd = tr.querySelectorAll('td');
@@ -100,6 +118,6 @@ export default {
       idea: idea
     }
     return quantity;
-  }
+  },
 
 }
