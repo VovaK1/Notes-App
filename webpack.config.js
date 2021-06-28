@@ -17,13 +17,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'script.js',
-    // assetModuleFilename: 'assets/[name][ext]'
   },
   devServer: {
     historyApiFallback: true,
     contentBase: path.join(__dirname, 'dist'),
     open: true,
-    // compress: true,
     hot: true,
     port: 3000
   },
@@ -31,9 +29,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.hbs'),
       filename: 'index.html',
-      // minify: {
-      //   collapseWhitespace: isProd
-      // }
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
