@@ -31,7 +31,7 @@ export default {
     const isValid = Model.checkValidity();
     if (isValid) {
       View.deletePreviousNote();
-      View.renderNote(Model.getNoteData());
+      View.renderNote(Model.getNoteData(), 'active');
       View.toggleModal();
     }
   },
