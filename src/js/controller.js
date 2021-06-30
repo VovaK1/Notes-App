@@ -21,7 +21,7 @@ export default {
   submitRoute() {
     const isValid = Model.checkValidity();
     if (isValid) {
-      View.renderNote(Model.getNoteData());
+      View.renderNote(Model.getNoteData(), 'active');
       this.updateActiveNotes();
       View.toggleModal();
     }
